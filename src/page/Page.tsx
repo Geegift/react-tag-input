@@ -1,9 +1,8 @@
 import TagInput from "../components/TagInput";
 
 const Page = () => {
-  const SEPARATORS = ["/", "*"];
+  const SEPARATORS = ["/", "-", "*", ","];
   const MAX_TAGS = 5;
-  const INIT_TAGS = ["item1", "item2"];
 
   return (
     <>

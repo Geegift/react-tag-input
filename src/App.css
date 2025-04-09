@@ -10,7 +10,6 @@
 }
 
 .tag-input-container {
-  justify-content: center;
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
@@ -65,10 +64,6 @@
 
 .tag-input-container:focus-within {
   border-color: #00A150;
-}
-
-.tag {
-  
 }
 
 .tag-input-container .tag-input {

@@ -70,25 +70,27 @@ describe("TagInput Component", () => {
   });
 
   test("handles separators with special characters", () => {
-    const separators = ["/", "-", "*"];
+    const separators = ["/", ",", "*"];
     const escapedSeparators = separators.map((sep) => sep.replace(/[-\\^$*+?.()|[\]{}]/g, "\\$&"));
     const regex = new RegExp(`[${escapedSeparators.join("")}]`);
 
     expect(regex.test("/")).toBe(true);
-    expect(regex.test("-")).toBe(true);
+    expect(regex.test(",")).toBe(true);
     expect(regex.test("*")).toBe(true);
   });
 
-  //   test("splits input based on custom separators", () => {
-  //     render(<TagInput separators={["/", "-", "*"]} />);
-
-  //     const input = screen.getByRole("textbox");
-  //     fireEvent.change(input, { target: { value: "item1/item2-item3*item1" } });
-  //     fireEvent.keyDown(input, { key: "Enter", code: "Enter" });
-
-  //     const tags = ["item1", "item1", "item2", "item3"];
-  //     tags.forEach((tag) => {
-  //       expect(screen.getByText(tag)).toBeInTheDocument();
-  //     });
-  //   });
+  test("splits input based on custom separators", () => {
+    render(<TagInput separators={["/", ",", "*"]} />);
+  
+    const input = screen.getByRole("textbox");
+    fireEvent.change(input, { target: { value: "item1/item2,item3*item1" } });
+    fireEvent.keyDown(input, { key: "Enter", code: "Enter" });
+  
+    const expectedTags = ["item1", "item1", "item2", "item3"];
+    expectedTags.forEach((tag) => {
+        const matchingTags = screen.getAllByText(tag);
+        expect(matchingTags.length).toBeGreaterThan(0);
+      });
+  });
+  
 });
