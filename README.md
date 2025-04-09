@@ -3,6 +3,7 @@
 Allows users to enter and manage multiple tags.
 
 ## Props     |   Description                         |   Type                       |   Default
+
 separators   |   value for customizable of separator |   string[]                   |   [","]
 maxTags      |   limit the number of tags            |   number                     |   Infinity
 onChange     |   onChange callback(added/removed)    |   (tags: string[]) => void;  |   
